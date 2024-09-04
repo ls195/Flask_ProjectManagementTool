@@ -1,0 +1,41 @@
+{%extends "base3.html"%}
+    
+{% block title %}update employee{% endblock %}
+
+{% block content %}
+    <h1>update employee</h1>
+    
+    {%for ma in mitarbeiter%}
+<br>
+    employee's ID: {{ma[0]}}
+
+</strong>
+    <br><br>
+    
+    <form action="/mitarbeiter/mitarbeiter/update/{{ma[0]}}/{{project_id}}" method="post" >  
+        
+    <table> 
+        <tr><td><label for="vorname">firstname:</label></td>
+        <td><input type="text" name="vorname" value="{{ma[1]}}" placeholder="vorname"></td></tr>
+        
+        <tr><td><label for="nachname">surname:</label></td>
+        <td><input type="text" name="nachname" value="{{ma[2] }}"></td></tr>
+        
+        <tr><td><label for="email">e-mail:</label></td>
+        <td><input type="text" name="email" value="{{ma[3] }}"></td></tr>
+        
+        <tr><td><label for="password">password:</label></td>
+        <td><input type="text" name="password" value="{{ma[4] }}"></td></tr>
+        
+        <tr><td><label for="vorname">role:</label></td>
+        <td><input type="text" name="rolle" value="{{ ma[5] }}"></td></tr>
+    </table><br><br>
+        <tr><td></td><td><button type="submit">save update</button></td></tr>
+        
+    </form>
+    {%endfor%}
+    <br>
+    <!--a href="/mitarbeiter">Zurück zur Mitarbeiterliste</a-->
+    
+    
+{%endblock%}

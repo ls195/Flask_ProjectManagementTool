@@ -1,0 +1,42 @@
+{%extends "base.html"%}
+    
+{% block title %}Neues Projekt anlegen{% endblock %}
+
+{% block content %}
+    <h1>Project bearbeiten</h1>
+    {%for element in project%}
+    <form method="post" action="/projekte/project/update/{{element[0]}}">
+        
+        
+        <label for="project_name">Aktueller Projektname:</label><br>
+        {{ element[1] }}<br>
+        <input type="text" name="project_name" value="{{ element[1] }}" placeholder="Alternativer Projektname"><br>   <!--project_name, description, start_date, end_date, project_manager_id, status-->
+        <br>
+        <label for="description">Aktuelle Beschreibung:</label><br>
+        <textarea name="description" placeholder="Geben Sie hier die neue Beschreibung ein:" cols="50" rows="6">{{element[2]}} </textarea><br>
+
+        <label for="start_date">Neues Startdatum?</label>
+        <input type="date" name="start_date" value="{{ element[3] }}" ><br>
+
+        <label for="end_date">Neues Enddatum?</label>
+        <input type="date" name="end_date" value="{{ element[4] }}" ><br>
+
+        <label for="project_manager_id">Project Manager ID:</label><br>
+        <input type="text" name="project_manager_id" value = "{{ element[5] }}" placeholder="Alternative PM-ID" ><br>   <!--project_name, description, start_date, end_date, project_manager_id, status-->
+
+        <label for="project_status">Aktueller Status:</label>
+        {{ element[6] }}<br>
+        <select name = "project_status" value = "{{ element[6] }}">
+            <option value = "pending">Pending...</option>
+            <option value = "in progress">In Progress...</option>
+            <option value = "done">Done!</option>
+        </select>
+        <br><br>
+
+
+        <button type="submit">Speichern</button>
+    </form>
+    {% endfor %}
+    <br>
+    
+    {%endblock%}

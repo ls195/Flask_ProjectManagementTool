@@ -1,0 +1,57 @@
+{%extends "base3.html"%}
+    
+{% block title %}employee segment{% endblock %}
+
+{% block content %}
+    <h1>employee segment</h1>                                <!-- Mitarbeiter-Segment -->
+
+
+    <table class="table table-primary table-striped-columns">
+        <tr><th>id</th><th>vorname</th><th>nachname</th><th>email</th><th>password</th><th>rolle</th><th>Optionen</th></tr>
+    {% for ma in mitarbeiter %}
+    <tr><td>{{ma[0]}}</td>
+        <td>{{ma[1]}}</a></td>
+            <td>{{ma[2]}}</td>
+            <td>{{ma[3]}}</td>
+            <td>{{ma[4]}}</td>
+            <td>{{ma[5]}}</td>
+            <td><a href ="/mitarbeiter/mitarbeiter/update/{{ma[0]}}/{{session['project_id']}}">Update</a>           <!--/mitarbeiter/update/{{ma[0]}}/{{session['project_id']}}-->
+            <a href ="/mitarbeiter/mitarbeiter/delete/{{ma[0]}}/{{session['project_id']}}">Delete</a></td>          <!--/mitarbeiter/delete/{{ma[0]}}/{{session['project_id']}}-->
+        </tr>
+    {% endfor %}    
+<br>
+    </table>
+    
+    {%if session.get('email_vergeben') ==1%}     
+    <br>   
+        <p>
+            Die <strong>E-Mail-Adresse wird bereits verwendet!</strong><br>
+            Bitte geben Sie eine andere E-Mail-Adresse an.
+        </p>
+    {% endif %}
+
+
+    
+    <h1>add employee:</h1>
+    <form action="/mitarbeiter/mitarbeiter/add/{{session['project_id']}}" method = "post" >
+        <table>
+        <tr><td><label for ="mitarbeiter">e-mail:</label></td>
+            <td><input type = "email" name = "email" placeholder = "E-Mail" required></td></tr>
+        <!--input type = "text" name = "project_description" placeholder = "Add a description" required-->
+        
+        <tr><td><label for ="password">password:</label></td>
+        <td><input type = "text" name = "password" placeholder = "enter password" ></td></tr>
+        
+        <tr><td><label for ="vorname">firstame:</label></td>
+        <td><input type = "text" name = "vorname" placeholder = "vorname" ></td></tr>
+        
+        <tr><td><label for ="nachname">surname:</label></td>
+        <td><input type = "text" name = "nachname" placeholder = "nachname" ></td></tr>
+        
+        <tr><td><label for ="rolle">role:</label></td>
+        <td><input type = "text" name = "rolle" placeholder = "what's his her role"></td></tr>
+        <tr><td></td><td><button type = "submit">add employee to project</button></td></tr>
+    </form>
+
+   
+    {%endblock%}

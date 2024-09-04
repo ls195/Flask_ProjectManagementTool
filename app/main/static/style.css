@@ -1,0 +1,21 @@
+.horizontal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.horizontal li {
+    float: left;
+}
+
+.horizontal li a {
+    display: block;
+    padding: 8px;
+    background-color: #ddd;
+    text-decoration: none;
+}
+
+.horizontal li a:hover {
+    background-color: #ccc;
+}

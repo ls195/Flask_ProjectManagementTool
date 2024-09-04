@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Flask App{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- obigen drei Links: https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        /* Allgemeines Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        header {
+            background-color: #6D90A6;          /*Rahmen*/ 
+            padding: 2px;
+            text-align: center;
+            color: black;
+        }
+
+        /* Menü über die gesamte Breite */
+        nav {
+            background-color: #6D90A6;       /*ganzes Menu*/ 
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Flexbox für horizontale Anordnung */
+            justify-content: right; /* Verteilung der Links über die Breite */
+        }
+
+        nav ul li {
+            margin: 0 10px; /* Horizontaler Abstand zwischen den Blöcken */
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 14px 16px;
+            text-align: center;
+            color: #F2F2F2;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        main {
+            padding: 50px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #ddd;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+    
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- Navigation links -->
+            <ul class="horizontal"> <!-- Klasse korrekt angegeben -->
+                <li><strong><a href="{{ url_for('projekte_routes.index_project') }}">projects</a></strong></li>
+                <li><strong><a href="{{ url_for('main_routes.logout') }}">log out</a></strong></li>
+                <!--strong><a href="{{ url_for('projekte_routes.index_project') }}">Projects</a></strong>
+                <!-- Weitere Links >
+                <strong><a href="{{ url_for('main_routes.logout') }}">Log out</a></strong-->
+            </ul>
+            
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Dieser Block wird durch die spezifischen Seiteninhalte ersetzt -->
+        {% endblock %}
+    </main>
+<br><br><br>
+    <footer>
+        <p>&copy; 2024 projectmanagement ls </p>
+    </footer>
+</body>
+</html>

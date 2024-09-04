@@ -1,0 +1,58 @@
+{%extends "base.html"%}
+    
+{% block title %}update task{% endblock %}
+
+{% block content %}
+    <h1>update task</h1>
+
+    {%for t in task%}
+
+    
+    <form action="/tasks/task/update/normal/{{t[6]}}/{{t[0]}}" method="post" >  
+        <table>
+        <tr><td><label for="task_title">title:</label></td>
+        <td><input type="text" name="task_title" value="{{ t[1] }}" placeholder="Alternativer Task-Titel"></td></tr>
+        
+  
+        <tr><td><label for="due_date">start:</label></td>
+        <td><input type="date" name="due_date" value="{{ t[4] }}"></td></tr>
+
+        <tr><td><label for="task_status">status:</label></td>
+        <td><select name = "task_status" value = "{{ t[3] }}">
+            <option value = "pending">Pending...</option>
+            <option value = "in progress">In Progress...</option>
+            <option value = "done">Done!</option>
+        </select></td></tr>
+        <tr><td><label for="assigned_to">assigned to:</label></td>
+        <td><select name = "assigned_to">
+            {%for ma in mitarbeiter%}
+            <option value = "{{ma[1]}} {{ma[2]}}">{{ma[1]}} {{ma[2]}}</option>
+            {%endfor%}
+        </select></td></tr>
+        <tr><td><label for="priority">priority:</label></td>
+        <td><select name = "task_priority">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+            <option value = "5">5</option>
+            <option value = "6">6</option>
+            <option value = "7">7</option>
+            <option value = "8">8</option>
+            <option value = "9">9</option>
+            <option value = "10">10</option>
+        </select></td></tr>
+        
+        <tr><td><label for="description">description:</label></td>
+        <td><textarea name="description" placeholder ="Geben Sie hier die neue Beschreibunge ein:" cols = "100" rows = "6" value="{{ t[2] }}">{{ t[2] }}</textarea></td></tr>
+
+        <br><br>
+
+
+        <tr><td></td><td><button type="submit">save update</button></td></tr>
+    </form>
+
+    <br>
+    {%endfor%}
+    
+{%endblock%}

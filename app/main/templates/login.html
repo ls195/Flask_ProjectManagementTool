@@ -1,0 +1,25 @@
+{%extends "base2.html"%}
+    
+{% block title %}beginning{% endblock %}
+
+{% block content %}   
+
+{% block body %}
+<h2>Sign in</h2>
+    <form method="POST" action="/login/verification">
+      <table>
+        <tr><td><label for="email">e-mail:</label></td>
+        <td><input type="email" name="email" placeholder="enter email" required></td></tr>
+       
+        <tr><td><label for="password">password:</label></td>
+        <td><input type="password"name="password" placeholder="enter password" required></td></tr>
+        <tr><td></td><td><button type="submit">submit</button></td></tr>
+        
+    </form>
+
+{% endblock %}
+
+    
+  {%endblock%}
+
+<!-- https://github.com/madhavwaj/Flask-User-Authentication/blob/main/flask-authentication-system/templates/login.html -->

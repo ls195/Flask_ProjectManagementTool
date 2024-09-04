@@ -1,0 +1,22 @@
+{%extends "base2.html"%}
+    
+{% block title %}logout{% endblock %}
+
+{% block content %} <h2>come back soon!</h2>
+{% endblock %}
+{% block body %}
+  {% with messages = get_flashed_messages() %}                <!-- https://flask.palletsprojects.com/en/3.0.x/patterns/flashing/  -->
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+    
+
+{%endblock%}
+<!-- https://github.com/madhavwaj/Flask-User-Authentication/blob/main/flask-authentication-system/templates/login.html -->

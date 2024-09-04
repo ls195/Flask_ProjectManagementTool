@@ -1,0 +1,31 @@
+{%extends "base.html"%}
+    
+{% block title %}Neues Projekt anlegen{% endblock %}
+
+{% block content %}
+
+
+
+<h1>add project:</h1><br>
+
+    <form action="/projekte/project/add/{{ user_id }}" method = "POST" >
+        <table>
+        <tr><td><label for ="project">Add Projectname:</label></td>
+        <td><input type = "text" name = "project_name" placeholder = "projectname" required></td></tr>
+        <!--input type = "text" name = "project_description" placeholder = "Add a description" required-->
+        <tr><td><label for = "date">Startdate:</label></td>
+        <td><input type = "date" name = "project_startdate" placeholder = "Add a startdate" ></td></tr>
+        <tr><td><label for = "date">Enddate</label></td>
+        <td><input type = "date" name = "project_enddate" placeholder = "Add a enddate" ></td></tr>
+        <tr><td><label for = "date">Status:</label></td>
+        <td><select name = "project_status">
+            <option value = "pending">Pending...</option>
+            <option value = "in progress">In Progress...</option>
+            <option value = "done">Done!</option>
+        </select></td></tr>
+        <tr><td><label for = "date">Description:</label></td></td>
+        <td><textarea name = "project_description" rows = "10" cols = "50" placeholder = "Add description"></textarea></td></tr>
+        <br>
+        <tr><td><button type = "submit">Add</button></td><td></td></tr>
+    </form>
+    {% endblock %}

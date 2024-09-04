@@ -1,0 +1,47 @@
+{%extends "base.html"%}
+    
+{% block title %}Projekte{% endblock %}
+
+{% block content %}
+{% for element in project %}
+
+<form action="/tasks/add/task/user_normal/{{element[0]}}" method="get">
+    <button type="submit">Task-Segment</button>                                       
+</form>
+<br>
+
+    <h1>project details</h1>
+    
+    <table class="table table-primary table-striped-columns">
+        <tr><th>ID</th><th>name</th><th>start</th><th>deadline</th><th>manager's id</th></t></tr>
+        
+        <tr><td>{{element[0]}}</td> <td>{{element[1]}} </td><td>{{element[3]}}</td><td>{{element[4]}}</td><td>{{element[5]}}</td></tr>
+    </table>
+    <h2 id = "h2_1">project description</h2>
+    <p id = "p1">
+
+        
+        {{element[2]}}  
+        
+    </p> 
+    
+    <!--h2>Tasks</h2>
+
+    {% endfor %}
+    <table border ="1">
+        <tr><th>ID</th><th>Title</th><th>Start_date</th><th>Priority</th><th>Projekt_member</th><th>Status</th></tr>
+    {% for task in tasks %}
+    <tr><td>{{task[0]}}</td
+        ><td>{{task[1]}}</td>
+            <td>{{task[4]}}</td>
+            <td>{{task[5]}}</td>
+            <td>{{task[7]}}</td>
+            <td>{{task[3]}}</td>
+        
+        </tr>
+    {% endfor %}    
+<br>
+    </table-->
+
+    
+{%endblock%}

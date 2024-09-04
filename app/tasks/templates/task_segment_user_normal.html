@@ -1,0 +1,61 @@
+{%extends "base.html"%}
+    
+{% block title %}task segment{% endblock %}
+
+{% block content %}
+    <h1>ur tasks</h1>
+
+    <table class="table table-primary table-striped-columns">
+        <tr><th>ID</th><th>title</th><th>start</th><th>priority</th><th>who's working on it</th><th>status</th></tr>
+    {% for task in tasks %}
+    <tr><td>{{task[0]}}</td>
+        <td><a href ="/tasks/project/task/details/user_normal/{{task[6]}}/{{task[0]}}">{{task[1]}}</a></td>
+            <td>{{task[4]}}</td>
+            <td>{{task[5]}}</td>
+            <td>{{task[7]}}</td>
+            <td>{{task[3]}}</td>
+        </tr>
+    {% endfor %}    
+<br>
+    </table>
+    
+    
+
+
+
+    {% for element in project %}
+    <form action="/tasks/project/details/tasks/add/{{element[0]}}" method = "POST" >
+    {% endfor %}    
+        <table>
+        <label for ="task_details"><h2>Add tasks to project:</h2></label>
+        <tr><td><label for ="add_title">add title:</label></td>
+        <td><input type = "text" name = "task_title" placeholder = "task title" required></td></tr>
+        <!--input type = "text" name = "project_description" placeholder = "Add a description" required-->
+        
+        <tr><td><label for ="task_duedate">deadline:</label></td>
+        <td><input type = "date" name = "task_duedate" placeholder = "deadline" ></td></tr>
+
+        <tr><td><label for ="task_priority">priority (10 = highest):</label></td>
+        <td><select name = "task_priority">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+            <option value = "5">5</option>
+            <option value = "6">6</option>
+            <option value = "7">7</option>
+            <option value = "8">8</option>
+            <option value = "9">9</option>
+            <option value = "10">10</option>
+        </select></td></tr>
+
+        <tr><td><label for ="assigned_to">assigned to:</label></td>
+        <td><input type = "text" name = "task_assigned_to" value = "not assigned yet" placeholder = "who's working on it?" ></td></tr>
+        <tr><td><label for ="task_description">add description:</label></td>
+        <td><textarea name = "task_description" rows = "10" cols = "50" placeholder = "Add description"></textarea></td></tr>
+        <tr><td></td><td><button type = "submit">save task</button></td></tr>
+
+        </table>
+    </form>
+    <!--a href ="/project/details/tasks/add/{{ project[0] }}">Add Tasks</a--> 
+{%endblock%}

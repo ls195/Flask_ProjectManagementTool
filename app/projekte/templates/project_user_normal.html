@@ -1,0 +1,34 @@
+{%extends "base.html"%}
+    
+{% block title %}Projekte{% endblock %}
+
+{% block content %}
+    <h1>project overview</h1>
+    {% set user_id = session.get('user_id') %}
+    {% set username = session.get('username') %}
+    <br>
+    <br>
+    <table class="table table-primary table-striped-columns">
+        <tr><th>name</th><th>start</th><th>deadline</th><th>manager's id</th><th>status</th></tr>
+    <tr>
+        {% for project in projects %}
+        <td>
+            <a href ="/projekte/project/details/user_normal/{{ project[0] }}">{{project[1]}}</a>                                     <!--aus der tabelle tasks, die einzelne Zeile Spalte 1 (bei 0 beginnend)-->
+        </td>
+        <td>
+            {{ project[3]}}
+        </td>
+        <td>
+            {{ project[4]}}
+        </td>
+        <td>
+            {{ project[5]}}
+        </td>
+        <td>
+            {{ project[6]}}
+        </td>
+    </tr>
+        {% endfor %}
+    
+    </table>
+    {%endblock%}

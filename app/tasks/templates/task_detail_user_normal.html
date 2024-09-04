@@ -1,0 +1,24 @@
+{%extends "base.html"%}
+    
+{% block title %}Task detail{% endblock %}
+
+{% block content %}
+    <h1>Task Detail</h1>
+
+    <table class="table table-primary table-striped-columns">
+        <tr><th>ID</th><th>Title</th><th>Start_date</th><th>Priority</th><th>Projekt_member</th><th>Status</th><th>Optionen</th></tr>
+        <tr><td>{{task[0]}}</td>
+        <td>{{task[1]}}</td>
+            <td>{{task[4]}}</td>
+            <td>{{task[5]}}</td>
+            <td>{{task[7]}}</td>
+            <td>{{task[3]}}</td>
+            <td><a href ="/tasks/task/update/normal/{{task[6]}}/{{task[0]}}">Update</a>
+            <a href ="/tasks/task/delete/{{task[0]}}/{{task[6]}}">Delete</a></td> 
+        </tr>
+
+    </table>
+    <br>
+    <h2>Beschreibung:</h2>
+    {{task[2]}}
+{%endblock%}

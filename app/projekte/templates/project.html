@@ -1,0 +1,56 @@
+{%extends "base.html"%}
+    
+{% block title %}overview{% endblock %}
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}                <!-- https://flask.palletsprojects.com/en/3.0.x/patterns/flashing/  -->
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <p>{{ message | safe  }}</p>                          <!-- | safe sorgt dafür, dass es als html interpretiert wird (<br>)-->
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+
+<br><br>
+    {% set user_id = session.get('user_id') %}
+    {% set username = session.get('username') %}
+    <h1>project overview</h1>
+    <form action="/projekte/add/project/{{user_id}}">
+        <button type="submit">add project</button>
+    </form>
+    <br>
+    <br>
+    <table class="table table-primary table-striped-columns">
+        <thead>
+            <tr>
+                <th scope = "col">projectname</th>                  <!--https://getbootstrap.com/docs/4.0/content/tables/-->
+                <th scope = "col">start-date</th>
+                <th scope = "col">deadline</th>
+                <th scope = "col">managerId</th>
+                <th scope = "col">status</th>
+                <th scope = "col">options</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for project in projects %}
+                <tr>
+                    <td><a href ="/projekte/project/details/{{ project[0] }}">{{project[1]}}</a></td>                                     <!--aus der tabelle tasks, die einzelne Zeile Spalte 1 (bei 0 beginnend)-->
+                    <td>{{ project[3]}}</td>
+                    <td>{{ project[4]}}</td>
+                    <td>{{ project[5]}}</td>
+                    <td>{{ project[6]}}</td>
+                    <td><a href ="/projekte/project/update/{{project[0]}}">Update</a><br><a href="/projekte/project/delete/{{ project[0] }}">Delete</a></td>
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+        
+    
+    </table>
+    {%endblock%}

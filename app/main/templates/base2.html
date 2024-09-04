@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}projectmanagement{% endblock %}</title>
+    <!--link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" /-->
+    <style>
+        /* Allgemeines Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        header {
+            background-color: #6D90A6;          /*Rahmen*/ 
+            padding: 2px;
+            text-align: center;
+            color: black;
+        }
+
+        /* Menü über die gesamte Breite */
+        nav {
+            background-color: #6D90A6;       /*ganzes Menu*/ 
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Flexbox für horizontale Anordnung */
+            justify-content: right; /* Verteilung der Links über die Breite */
+        }
+
+        nav ul li {
+            margin: 0 10px; /* Horizontaler Abstand zwischen den Blöcken */
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 14px 16px;
+            text-align: center;
+            color: #F2F2F2;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        main {
+            padding: 50px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #ddd;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="horizontal"> 
+                <li><strong><a href="/login">sign In</a></strong></li>
+                <li><strong><a href="/register">sign Up</a></strong></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Dieser Block wird durch die spezifischen Seiteninhalte ersetzt -->
+        {% endblock %}
+    </main>
+    <br><br><br>
+    <footer>
+        <p>&copy; 2024 projectmanagement ls</p>
+    </footer>
+</body>
+</html>
